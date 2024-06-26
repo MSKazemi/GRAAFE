@@ -2,7 +2,7 @@
 
 ### Authors: Martin Molan, Mohsen Seyedkazemi Ardebili, Junaid Ahmed Khan, Francesco Beneventi, Daniele Cesarini, Andrea Borghesi, Andrea Bartolini
 
-
+![Link to the paper GRAAFE: GRaph Anomaly Anticipation Framework for Exascale HPC systems] (https://www.sciencedirect.com/science/article/pii/S0167739X24003327?via%3Dihub)
 
 ![Screenshot from 2023-04-13 11-08-35](https://user-images.githubusercontent.com/13011878/231729695-fb6b5e87-b932-49df-859f-b87156e1b994.png)
 
