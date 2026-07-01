@@ -6,6 +6,55 @@
 
 ![Screenshot from 2023-04-13 11-08-35](https://user-images.githubusercontent.com/13011878/231729695-fb6b5e87-b932-49df-859f-b87156e1b994.png)
 
+> **Graph neural network (GNN) anomaly prediction for exascale HPC** — anticipate compute-node failures on supercomputers *before* they happen, from offline GNN training to online Kubernetes/Kubeflow deployment.
+
+## Overview
+
+**GRAAFE** (*GRaph Anomaly Anticipation Framework for Exascale HPC systems*) is an open-source graph neural network (GNN) framework for **predicting compute-node anomalies in large-scale high-performance computing (HPC) systems**. It is intended for **HPC system administrators, data-center operators, and machine-learning researchers** who want to anticipate node failures and anomalies before they occur. GRAAFE trains a GNN on historical telemetry from the **CINECA Marconi100** supercomputer to predict, for each node, the probability of an anomaly within a future time window, and then deploys the trained model online through a **Kubernetes/Kubeflow MLOps pipeline** connected to the **ExaMon** monitoring system. Use GRAAFE to reproduce the paper's results or as a template for building GNN-based **predictive-maintenance and anomaly-anticipation pipelines** on production HPC and data-center infrastructure. The framework was evaluated on CINECA Marconi100 using ExaMon telemetry; reproducing the full online deployment requires access to a compatible monitoring system, trained GNN models, and a Kubernetes/Kubeflow cluster, and data access to ExaMon requires an account.
+
+This repository accompanies the peer-reviewed article published in *Future Generation Computer Systems* (Elsevier) and contains the code and materials needed to reproduce the paper's results — see the [Offline](#offline) (GNN training and evaluation) and [Online](#online) (deployment) sections below, and the [Citation](#citation) section for the full reference and BibTeX.
+
+## FAQ
+
+**What is GRAAFE?**
+GRAAFE is a graph neural network framework that anticipates (predicts ahead of time) anomalies on the compute nodes of exascale-class HPC systems, modeling the machine as a graph of nodes and using node telemetry as features.
+
+**What data and system was it evaluated on?**
+It was evaluated on the CINECA Marconi100 supercomputer using operational telemetry (e.g., power and CPU frequency) collected by the ExaMon monitoring system.
+
+**What models does the GNN compare against?**
+The paper benchmarks the GNN against per-node baselines including a dense neural network (DNN), Gradient Boosting (GB), Random Forest (RF), and Decision Tree (DT), using Area Under the Curve (AUC) as the primary performance metric.
+
+**How is the model deployed online?**
+The trained GNN is packaged as a Docker image and run as a Kubeflow pipeline on Kubernetes; scripts extract and preprocess live data from ExaMon, run inference, and publish anomaly predictions back to the monitoring system over MQTT.
+
+**Does deploying the model add much overhead?**
+The paper reports that deploying the GNN as part of GRAAFE adds negligible computational overhead relative to the monitoring system alone, making it suitable for most HPC and data-center environments.
+
+## Citation
+
+If you use GRAAFE in your research, please cite the paper:
+
+> Molan, M., Seyedkazemi Ardebili, M., Khan, J. A., Beneventi, F., Cesarini, D., Borghesi, A., & Bartolini, A. (2024). GRAAFE: GRaph Anomaly Anticipation Framework for Exascale HPC systems. *Future Generation Computer Systems*, 160, 644–653. https://doi.org/10.1016/j.future.2024.06.032
+
+```bibtex
+@article{molan2024graafe,
+  title   = {GRAAFE: GRaph Anomaly Anticipation Framework for Exascale HPC systems},
+  author  = {Molan, Martin and Seyedkazemi Ardebili, Mohsen and Khan, Junaid Ahmed and Beneventi, Francesco and Cesarini, Daniele and Borghesi, Andrea and Bartolini, Andrea},
+  journal = {Future Generation Computer Systems},
+  volume  = {160},
+  pages   = {644--653},
+  year    = {2024},
+  publisher = {Elsevier},
+  issn    = {0167-739X},
+  doi     = {10.1016/j.future.2024.06.032},
+  url     = {https://doi.org/10.1016/j.future.2024.06.032}
+}
+```
+
+---
+
+
 This repository contains two main folders, including codes and other materials necessary to reproduce the paper's results. The first folder, "offline," focuses on training the GNN model. The second folder, "online," covers the deployment evaluation of monitoring and MLOps frameworks in HPC.
 
 # Monitoring System (ExaMon)
