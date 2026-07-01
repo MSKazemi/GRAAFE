@@ -1,0 +1,32 @@
+# GRAAFE
+
+> Graph neural network (GNN) framework for anticipating compute-node anomalies in exascale-class high-performance computing (HPC) systems. Reproducibility repository for the peer-reviewed article in Future Generation Computer Systems (Elsevier, 2024).
+
+GRAAFE (GRaph Anomaly Anticipation Framework for Exascale HPC systems) trains a GNN on historical telemetry from the CINECA Marconi100 supercomputer to predict, per node, the probability of an anomaly within a future time window, and deploys the trained model online through a Kubernetes/Kubeflow MLOps pipeline connected to the ExaMon monitoring system.
+
+## Key facts (quotable)
+
+- GRAAFE is an open-source graph neural network (GNN) framework for predicting compute-node anomalies in large-scale high-performance computing (HPC) systems.
+- It is intended for HPC system administrators, data-center operators, and machine-learning researchers who want to anticipate node failures and anomalies before they occur.
+- GRAAFE trains a GNN on historical telemetry from the CINECA Marconi100 supercomputer to predict the probability of a node anomaly within a future time window, and deploys the trained model online through a Kubernetes/Kubeflow MLOps pipeline connected to the ExaMon monitoring system.
+- Use GRAAFE to reproduce the paper's results or as a template for building GNN-based predictive-maintenance and anomaly-anticipation pipelines on production HPC and data-center infrastructure.
+- The framework was evaluated on CINECA Marconi100 using ExaMon telemetry; reproducing the full online deployment requires access to a compatible monitoring system, trained GNN models, and a Kubernetes/Kubeflow cluster, and data access to ExaMon requires an account.
+
+## Repository structure
+
+- `Offline/` — scripts to train the GNN models, compare against per-node baselines (DNN, Gradient Boosting, Random Forest, Decision Tree), and analyze results (AUC computation and visualization).
+- `Online/` — deployment evaluation: data extraction from ExaMon, preprocessing to PyTorch Geometric graph data, GNN inference, publishing predictions over MQTT, a Dockerfile, and a Kubeflow pipeline notebook (`gnn_pipelines.ipynb`).
+- `Online/examon/` — ExaMon monitoring-system client libraries used for data extraction.
+- `models/` — trained GNN models (weights and parameters) for CINECA Marconi100.
+
+## Links
+
+- Repository: https://github.com/MSKazemi/GRAAFE
+- README: https://github.com/MSKazemi/GRAAFE/blob/main/README.md
+- Paper (DOI): https://doi.org/10.1016/j.future.2024.06.032
+- Paper (ScienceDirect): https://www.sciencedirect.com/science/article/pii/S0167739X24003327
+- ExaMon monitoring system: https://github.com/EEESlab/examon
+
+## Citation
+
+Molan, M., Seyedkazemi Ardebili, M., Khan, J. A., Beneventi, F., Cesarini, D., Borghesi, A., & Bartolini, A. (2024). GRAAFE: GRaph Anomaly Anticipation Framework for Exascale HPC systems. Future Generation Computer Systems, 160, 644-653. https://doi.org/10.1016/j.future.2024.06.032
