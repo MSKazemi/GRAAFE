@@ -396,3 +396,9 @@ Using multiple pods in a continuous approach increases the CPU load of the monit
 | All Racks, Multiple Pods, Discrete   |                 3.84 |      189.45 |             8724 |              8152 |
 | All Racks, One Pod, Continuous       |                 5.87 |      189.51 |             9190 |              8546 |
 | All Racks, One Pod, Discrete         |                 3.41 |      189.43 |             8686 |              7738 |
+
+<!-- legal-notice: start -->
+### Legal notice and responsible use
+
+The materials in this repository are made available without warranties to the extent permitted by applicable law. **Please read the [Disclaimer and Responsible-Use Notice](DISCLAIMER.md)** before relying on or deploying them. This notice does not change any existing software license or limit rights that cannot legally be waived.
+<!-- legal-notice: end -->
